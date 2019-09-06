@@ -1,0 +1,98 @@
+<html>
+
+<head>
+  <title>Gyanendra Chaubey</title>
+
+  <style>
+    html,
+    body {
+      padding: 0;
+      margin: 0;
+    }
+
+    input {
+      font-size: 14px;
+      font-family: Helvetica, sans-serif;
+    }
+
+    body {
+      background-color: #BBB;
+      font-family: Helvetica, sans-serif;
+      padding-bottom: 100px;
+    }
+
+    h2,
+    h3 {
+      margin: 0 0 .75em 0;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div>
+    <input type="text" onkeydown="handleTypeDebounce()">
+    <label id="myinput">Search</label>
+    </input>
+  </div>
+  <div> <button id="myButton" onclick="handleClick()">
+      Click me!
+    </button>
+  </div>
+</body>
+<script>
+  var handleType = function () {
+    console.log('handling search : -> ', document.querySelector('input').value);
+  }
+
+  var handleClick = function() {
+    var timeoutID = setTimeout(() => {
+      console.log('going to handle click after 4 seconds!');
+    }, 4000);
+
+    console.log(timeoutID);
+  }
+
+  var debounce = function (func, delay) {
+      var timer;
+      return function () {
+        if (timer) {
+          clearTimeout(timer);
+          timer = setTimeout(func.bind(this, arguments), delay);
+        } else {
+          timer = setTimeout(func.bind(this, arguments), delay);
+        }
+      }
+    }
+
+  var anotherDebounce = function (func, delay) {
+    let timer;
+    return function () {
+      let context = this, args = arguments;
+      console.log('clearing timeout' , timer);
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        func.apply(context, args)
+      }, delay)
+    }
+  }
+
+  var throttle = function(func, delay) {
+    return function() {
+      let throttle;
+      let context = this; args = arguments;
+      if(throttle) {
+        func.apply(this, arguments);
+        throttle = false;
+      }
+      else {
+        setTimeout(func.bind(this, arguments), delay);
+        throttle = true;
+      }
+    }
+  }
+
+  var handleTypeDebounce = throttle(handleType, 1000);
+</script>
+
+</html>

@@ -1,0 +1,46 @@
+<html>
+
+<head>
+    <title>Gyan Script</title>
+
+    <style>
+        div {
+            border: 1px solid black;
+            min-height: 100px;
+            min-width: 100px;
+            padding: 20px;
+        }
+    </style>
+
+</head>
+
+<body>
+<div id="parent"> Parent
+  <div id="child1"> Child1
+  </div>
+</div>
+</body>
+
+<script>
+     setTimeout(function() {
+		var child2 = document.createElement("div");
+		child2.setAttribute("id", "child2");  
+		child2.innerHTML = "Child2";
+		document.getElementById("parent").appendChild(child2);
+		}, 2000);
+		
+	var target = document.querySelector('#parent');
+	// create an observer instance
+	var observer = new MutationObserver(function(mutations) {
+		mutations.forEach(function(mutation) {
+			console.log(mutation.addedNodes[0]);
+		});
+	});
+	
+	var config = {attributes: true, childList: true, characterData: true };
+	
+	observer.observe(target,config);
+	
+</script>
+
+</html>

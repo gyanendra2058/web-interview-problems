@@ -1,0 +1,11 @@
+{
+  "name": "web-interview-problems",
+  "version": "1.0.0",
+  "description": "A compilation of frequently asked question during frontend interviews",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Gyanendra Chaubey",
+  "license": "MIT"
+}
