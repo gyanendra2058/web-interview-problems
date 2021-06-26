@@ -22,4 +22,4 @@ let parentFn = function (n) {
     setTimeout(() => console.log("Execution ended for parentFn"), (delayCalculatorFn(n)) * 1000);
 };
 
-parentFn(10);
+parentFn(5);

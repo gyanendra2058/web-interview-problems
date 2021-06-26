@@ -1,0 +1,30 @@
+$color: #bada55;
+$gray : #ddd;
+$small: 1rem;
+$med: 1.5rem;
+$lg: 2.0rem;
+$serif: 'Times New Roman', Palatino, serif;
+$sans: Arial, Helvetica, sans-serif;
+
+@mixin fonts {
+    font: {
+        size: $small;
+        family: $sans;
+    };
+}
+
+@mixin  transitProp($val) {
+    opacity: $val;
+    transform: scale($val);
+}
+p {
+    @include fonts;
+}
+
+p.leave {
+
+}
+
+p.arrive {
+
+}
